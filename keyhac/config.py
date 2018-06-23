@@ -1,12 +1,17 @@
 ﻿import sys
 import os
 import datetime
+import platform
 
 import pyauto
 from keyhac import *
 
 
 def configure(keymap):
+    hostname = platform.uname()[1]
+
+    kbd_jp = (hostname in ('HA000070758'))
+    thinkpad = (hostname in ('HA000070758'))
 
     # --------------------------------------------------------------------
     # Text editer setting for editting config.py file
@@ -52,7 +57,7 @@ def configure(keymap):
     if 1:
         keymap.clipboard_history.enableHook(False)
 
-    if 1:
+    if kbd_jp:
         # Japanese 106 Keyboard --> US-ASCII 101 Keyboard
         keymap_global[ "S-2" ] = "Atmark"                # " -> @
         keymap_global[ "S-6" ] = "Caret"                 # & -> ^
@@ -70,6 +75,8 @@ def configure(keymap):
         keymap_global[ "S-Semicolon" ] = "Colon"         # + -> :
         keymap_global[ "Colon" ] = "S-7"                 # : -> '
         keymap_global[ "S-Colon" ] = "S-2"               # * -> "
+
+    if thinkpad:
         keymap_global[ "Backslash" ] = "S-Atmark"        # Backslash -> `
 
     # Global keymap which affects any windows
