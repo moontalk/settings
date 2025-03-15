@@ -53,6 +53,7 @@ def configure(keymap):
         keymap_global[ "C-H" ] = "Back"                # Backspace
         keymap_global[ "C-M" ] = "Enter"               # Enter
         keymap_global[ "LWin-F" ] = "C-F"              # Find
+        keymap_global[ "C-I" ] = "Tab"                 # Tab
 
     if 1:
         keymap.clipboard_history.enableHook(False)
